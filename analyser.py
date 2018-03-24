@@ -20,7 +20,7 @@ hillary_train_set = train_set[train_set['target'] == b'Hillary Clinton']
 # Initialise model
 classifier = DeyClassifier()
 classifier.togglePhaseOneFeatures(mpqa_score=True, swn_score=False, adjective_occurance=True)
-classifier.togglePhaseTwoFeatures(swn_score=True, mpqa_score=True, frame_semantics=True, target_detection=True,
+classifier.togglePhaseTwoFeatures(swn_score=False, mpqa_score=False, frame_semantics=False, target_detection=False,
                                   word_ngrams=True, char_ngrams=True)
 
 # Prepare model with SemEval16 stance dataset
@@ -39,7 +39,7 @@ with open('data\\tweets\\0-58_part1\\tweet_subset_1_part1.csv', 'r', encoding="u
         # Avoid header
         if i!=0:
 
-            if i <= 1000000:
+            if i <= 2000000:
                 users.append(line[1])
 
                 date_str = line[2]

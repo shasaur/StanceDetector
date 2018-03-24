@@ -34,7 +34,7 @@ hillary_test_set = test_all[test_all['target'] == b'Hillary Clinton']
 classifier = DeyClassifier()
 classifier.togglePhaseOneFeatures(mpqa_score=True, swn_score=False, adjective_occurance=True)
 classifier.togglePhaseTwoFeatures(swn_score=False, mpqa_score=False, frame_semantics=False, target_detection=False,
-                                  word_ngrams=True, char_ngrams=False)
+                                  word_ngrams=True, char_ngrams=True)
 # classifier.toggleTriclassMode() # has to be on until algo learns to filter properly
 
 # Run model on data

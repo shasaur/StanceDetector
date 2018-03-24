@@ -228,33 +228,7 @@ class DeyClassifier:
             else:
                 existing_grams[o] = 1
 
-    def getCharNGramFrequencies(self, tokens):
-        all_grams = {}
-
-        # char_trigrams = set()
-        # char_4grams = set()
-
-        for t in tokens:
-            char_grams = set()
-
-            for w in t:
-                current_grams = [w[i:i + 2] for i in range(len(w) - 1)]
-                self.addOccurancesToCount(all_grams, current_grams)
-
-                current_grams = [w[i:i + 3] for i in range(len(w) - 2)]
-                self.addOccurancesToCount(all_grams, current_grams)
-
-                current_grams = [w[i:i + 4] for i in range(len(w) - 3)]
-                self.addOccurancesToCount(all_grams, current_grams)
-
-        return all_grams
-
     ## PREPROCESSING
-    # Returns the tweet split into tokens
-    # def tokenise(self, tweet):
-    #     tweet_string = tweet.decode("utf-8")
-    #     return self.split_poorly(tweet_string)
-
     def removeSymbols(self, tokens):
         new_tokens = []
         for t in tokens:
@@ -300,20 +274,35 @@ class DeyClassifier:
     def setNGramVocab(self, tweets):
         self.ngrams = self.count_vectoriser.get_feature_names()
 
+    def countCharGramFrequencies(self, tokens):
+        all_grams = {}
+
+        for t in range(len(tokens)):
+            current_grams = set()
+
+            for w in tokens[t]:
+                current_grams = current_grams.union(set([w[i:i + 2] for i in range(len(w) - 1)]))
+                current_grams = current_grams.union(set([w[i:i + 3] for i in range(len(w) - 2)]))
+                current_grams = current_grams.union(set([w[i:i + 4] for i in range(len(w) - 3)]))
+
+            # Add occurrences to df list
+            for gram in current_grams:
+                if gram in all_grams.keys():
+                    all_grams[gram] += 1
+                else:
+                    all_grams[gram] = 1
+
+        return all_grams
+
     def setNCharGramVocab(self, tokens):
         # get total frequency count of each ngram for all documents
-        self.ngrams_frequency_map = self.getCharNGramFrequencies(tokens)
+        ngrams_frequency_map = self.countCharGramFrequencies(tokens)
         self.character_ngrams = set()
 
-        min_df = 0.01
-
-        total_frequency = 0
-        for ngram_frequency in self.ngrams_frequency_map.values():
-            total_frequency += ngram_frequency
-
+        min_df = 0.18
         # document wide thresholding
-        for ngram in self.ngrams_frequency_map.keys():
-            if float(self.ngrams_frequency_map[ngram])/float(total_frequency) >= min_df:
+        for ngram in ngrams_frequency_map.keys():
+            if float(ngrams_frequency_map[ngram])/float(len(tokens)) >= min_df:
                 self.character_ngrams.add(ngram)
 
         print(self.character_ngrams)
@@ -461,18 +450,20 @@ class DeyClassifier:
                 else:
                     sss = raw_tweets[t].lower()
 
-                features[t].append('hillary clinton' in sss)
-                # features[t].append(self.tweetContains('hillaryclinton', tokens[t]))
-                # features[t].append(self.tweetContains('hillary', tokens[t]))
-                # features[t].append(self.tweetContains('clinton', tokens[t]))
-                # features[t].append(self.tweetContains('clinton', tokens[t]) and self.tweetContains('hillary', tokens[t]))
+                target_present = False
+                if 'hillary clinton' in sss:
+                    target_present = True
+                if 'hillaryclinton' in sss:
+                    target_present = True
+                if 'hillary' in sss:
+                    target_present = True
+                if 'clinton' in sss:
+                    target_present = True
+
+                features[t].append(target_present)
 
         # WORD N-GRAMS
         if self.p2f_active[P2F.wordgrams]:
-            print("word n-grams", len(features), len(self.ngrams))
-            print("word n-grams", features[0])
-            print("word n-grams", self.ngrams[0])
-
             for t in range(len(tokens)):
                 ngram_occurence = [False] * len(self.ngrams)
                 for token in tokens[t]:
@@ -481,8 +472,8 @@ class DeyClassifier:
 
                 features[t] = features[t] + ngram_occurence
 
-        for i in range(len(features)):
-            features[i].append(0)
+        # for i in range(len(features)):
+        #     features[i].append(0)
 
         # CHARACTER N-GRAMS
         if self.p2f_active[P2F.chargrams]:
