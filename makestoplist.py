@@ -17,19 +17,15 @@ def isAdjective(word):
 words = []
 accuracies = []
 
-with open('data\\stop-words\\class-occurance-popularity-index.csv', 'r') as csvfile:
+with open('data\\stop-words\\sentiment-occurance-popularity-index.csv', 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in reader:
         accuracies.append(row[3])
-
-with open('data\\stop-words\\class-occurance-popularity-index.csv', 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-    for row in reader:
         words.append(row[0])
 
 manual_stop_words = []
 for i in range(len(words)):
-    if float(accuracies[i]) <= 0.6:
+    if float(accuracies[i]) <= 0.5:
         manual_stop_words.append(words[i])
 
 #manual_stop_words = removeSubset(all, subset)

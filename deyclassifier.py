@@ -57,8 +57,9 @@ class DeyClassifier:
 
         self.test_array = []
 
-        self.stop_words = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'is', 'it', 'its', 'of', 'that', 'the', 'to', 'was', 'were', 'will', 'with', 'because', 'i', 'want', 'american', 'women', 'woman', 'president', 'semst', 'years', 'hillary', 'never', 'she', 'email', 'media', 'take', 'gop', 'vote', 'hillaryclinton', 'hillaryforia', 'world', 'supporting', 'you', 'remember', 'war', 'before', 'whatever', 'benghazi', 'day', 'ever', 'justice', 'have', 'rights', 's', 'clinton', 'would', 'term', 'her', 'emails', 'lies', 'your', 'face', 'bill', 'wants', 'dude', 'if', 'can', 'do', 'what', 'did', 'doing', 'who', 'm', 'didn', 't', 'realize', 'how', 'run', 'office', 'this', 'libertynothillary', 'tcot', 'uniteblue', 'there', 'when', 'think', 'next', 'either', 'or', 'obama', 'hey', 'way', 'votes', 'too', 'says', 'campaign', 'secretary', 'state', 'chrischristie', 'his', 'let', 'are', 'words', 'blame', 'time', 'for', '000', 'our', 'iraq', 'know', 'year', 'could', 'really', 'country', 'make', 'p2', 'why', 'people', 'around', 'hate', 'spent', 'problem', 'not', 'party', 'house', 'against', 'news', 'am', 'person', 'usa', 'isis', 'bush', 'doesn', 'care', 'coming', 'don', 'finally', 'call', 'man', 'they', 'dog', 'thehill', 'me', 'leave', 'focus', 'issues', '2016', 'candidates', 'cruz', 'donors', 'clintons', '1', 'marriage', 'equality', 'readyforhillary', 'needs', '10', 'yes', 'tell', 'us', 'get', 'lying', 'again', 'lie', 'nothing', 'sending', 'love', 'victory', 'marcorubio', 'speech', 'd', 'called', 'nohillary2016', 'whyimnotvotingforhillary', 'democrat', 'their', 'shit', 'gets', 'keep', 'theblaze', 'taking', 'muslim', 'rid', '11', 'also', 'thedemocrats', 'lied', 'agree', 'randpaul', 'americans', 'education', 'family', 'but', 'freedom_justice_equality_education', 'innovation', 'development', 'happy_life', 'utopia', 'idea', 'machine', 'those', 'tweet', 'job', 'answer', 'today', 'happen', 'say', 'rest', 'yawn', 'iowa', 'saudi', 'govt', 'monica', 'politico', 'watch', 'god', 'liberals', 'china', 'works', 'voting', 'talk', 'chelsea', 'end', 'foundation', 'clintoncash', 'foxnews', 'server', 'candidate', 'potus', 'unitedstates', 'took', 'marymorientes', 'anything', 'change', 'longer', 'hrc', 'baltimore', 'faith', 'believe', 'mistakes', 'politics', 'feel', 'wasn', '2013', 'newamericancentury', 'billclinton', 'teen', 'hope', 'texas', 'pay', 'keeps', 'join', 'mention', 'follow', 'of', 'warcraft', '(online', 'gaming)', 'wakeupamerica', 'politician', 'gays', 'hypocrite', 'berniesanders', 'democrats', 'guy', 'until', 'election', 'dem', 'voters', 'team', 'wife', 'vs', 'bernie', 'sanders', 'speak', '5', 'gee', 'makes', 'making', '7', 'got', 'w', 'talking', 'blacks', 'should', 'trust', 'between', 'policy', 'death', 'workers', 'equalityforall', 'futuretxleader', 'n', 'tea', 'been', 'bless', 'bernie2016', 'jstines3', 'mouth', 'night', 'republicans', 'leader', 'weekend', 'l', 'where', 'life', '/', "you're", 'rock', 'line', 'donaldtrump', 'awesome', 'supporter', 'said', 'hilary', 'deleted', 'scandal', 'into', 'county', 'joke', 'story', 'mom', 'slogan', 'truth', 'shirt', 'idiot', 'else', 'biggest', 'ass', 'these', 'lovewins', 'lgbt', 'laws', 'reality', 'knew', 'tv', 'show', 'wait', 'aren', 'pretending', 'stophillary2016', 'gonna', 'lose', 'told', 'cant', 'might', 'fire', 'record', 'c', 'tlot', 'fox', 'cost', 'parent', 'is', 'watching?', 'rubio2016', 'continue', 'univision', 'joebiden', 'putin', 'supporters', 'hill', 'hillaryforsc', 'queen', 'anyone', 'drmartyfox', 'manage', 'hillaryemails', 'fax', 'released', '0', 'freeallfour', 'hillaryinnh', 'killary', '_']
+        self.stop_words_p1 = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'is', 'it', 'its', 'of', 'that', 'the', 'to', 'was', 'were', 'will', 'with', 'because', 'i', 'want', 'american', 'women', 'woman', 'president', 'semst', 'years', 'hillary', 'never', 'she', 'email', 'media', 'take', 'gop', 'vote', 'hillaryclinton', 'hillaryforia', 'world', 'supporting', 'you', 'remember', 'war', 'before', 'whatever', 'benghazi', 'day', 'ever', 'justice', 'have', 'rights', 's', 'clinton', 'would', 'term', 'her', 'emails', 'lies', 'your', 'face', 'bill', 'wants', 'dude', 'if', 'can', 'do', 'what', 'did', 'doing', 'who', 'm', 'didn', 't', 'realize', 'how', 'run', 'office', 'this', 'libertynothillary', 'tcot', 'uniteblue', 'there', 'when', 'think', 'next', 'either', 'or', 'obama', 'hey', 'way', 'votes', 'too', 'says', 'campaign', 'secretary', 'state', 'chrischristie', 'his', 'let', 'are', 'words', 'blame', 'time', 'for', '000', 'our', 'iraq', 'know', 'year', 'could', 'really', 'country', 'make', 'p2', 'why', 'people', 'around', 'hate', 'spent', 'problem', 'not', 'party', 'house', 'against', 'news', 'am', 'person', 'usa', 'isis', 'bush', 'doesn', 'care', 'coming', 'don', 'finally', 'call', 'man', 'they', 'dog', 'thehill', 'me', 'leave', 'focus', 'issues', '2016', 'candidates', 'cruz', 'donors', 'clintons', '1', 'marriage', 'equality', 'readyforhillary', 'needs', '10', 'yes', 'tell', 'us', 'get', 'lying', 'again', 'lie', 'nothing', 'sending', 'love', 'victory', 'marcorubio', 'speech', 'd', 'called', 'nohillary2016', 'whyimnotvotingforhillary', 'democrat', 'their', 'shit', 'gets', 'keep', 'theblaze', 'taking', 'muslim', 'rid', '11', 'also', 'thedemocrats', 'lied', 'agree', 'randpaul', 'americans', 'education', 'family', 'but', 'freedom_justice_equality_education', 'innovation', 'development', 'happy_life', 'utopia', 'idea', 'machine', 'those', 'tweet', 'job', 'answer', 'today', 'happen', 'say', 'rest', 'yawn', 'iowa', 'saudi', 'govt', 'monica', 'politico', 'watch', 'god', 'liberals', 'china', 'works', 'voting', 'talk', 'chelsea', 'end', 'foundation', 'clintoncash', 'foxnews', 'server', 'candidate', 'potus', 'unitedstates', 'took', 'marymorientes', 'anything', 'change', 'longer', 'hrc', 'baltimore', 'faith', 'believe', 'mistakes', 'politics', 'feel', 'wasn', '2013', 'newamericancentury', 'billclinton', 'teen', 'hope', 'texas', 'pay', 'keeps', 'join', 'mention', 'follow', 'of', 'warcraft', '(online', 'gaming)', 'wakeupamerica', 'politician', 'gays', 'hypocrite', 'berniesanders', 'democrats', 'guy', 'until', 'election', 'dem', 'voters', 'team', 'wife', 'vs', 'bernie', 'sanders', 'speak', '5', 'gee', 'makes', 'making', '7', 'got', 'w', 'talking', 'blacks', 'should', 'trust', 'between', 'policy', 'death', 'workers', 'equalityforall', 'futuretxleader', 'n', 'tea', 'been', 'bless', 'bernie2016', 'jstines3', 'mouth', 'night', 'republicans', 'leader', 'weekend', 'l', 'where', 'life', '/', "you're", 'rock', 'line', 'donaldtrump', 'awesome', 'supporter', 'said', 'hilary', 'deleted', 'scandal', 'into', 'county', 'joke', 'story', 'mom', 'slogan', 'truth', 'shirt', 'idiot', 'else', 'biggest', 'ass', 'these', 'lovewins', 'lgbt', 'laws', 'reality', 'knew', 'tv', 'show', 'wait', 'aren', 'pretending', 'stophillary2016', 'gonna', 'lose', 'told', 'cant', 'might', 'fire', 'record', 'c', 'tlot', 'fox', 'cost', 'parent', 'is', 'watching?', 'rubio2016', 'continue', 'univision', 'joebiden', 'putin', 'supporters', 'hill', 'hillaryforsc', 'queen', 'anyone', 'drmartyfox', 'manage', 'hillaryemails', 'fax', 'released', '0', 'freeallfour', 'hillaryinnh', 'killary', '_']
 
+        self.stop_words_p2 = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'is', 'it', 'its', 'of', 'that', 'the', 'to', 'was', 'were', 'will', 'with', 'i', 'to', 'rubio', 'while', 'community', 'barackobama', 'world', 'you', 'whatever', 'ever', 'your', 've', 'my', 'm', 'run', 'this', 'only', 'words', 'our', 'year', 'people', 'party', 'am', 'jeb', 'don', 'yet', 'finally', 'me', '2016', 'over', 'had', 'twitter', 'cruz', 'america', 'name', 'tedcruz', 'getting', '3', 'randpaul', 'freedom_justice_equality_education', 'innovation', 'development', 'happy_life', 'utopia', 'hide', 'hell', 'use', 'rest', 'yawn', 'trump', 'already', 'marymorientes', 'change', 'baltimoreriots', 'thing', 'hear', 'of', 'warcraft', '(online', 'gaming)', 'voters', 'destroy', 'bernie', 'sanders', 'always', '5', 'realdonaldtrump', 'making', 'please', 'trust', 'policy', 'thanks', 'workers', 'lead', 'liar', 'jebbush', 'county', 'fellowssc', 'hug', 'truth', 'guy', 'life', 'scotus', 'wins', 'lovewins', 'enough', 'having', 'fire', 'feelthebern', 'tonight', 'flip', 'issue', 'ecstasy', 'transparency', 'chance', 'control']
 
         self.p1f_active = {}
         self.p2f_active = {}
@@ -96,7 +97,7 @@ class DeyClassifier:
         # simplified = simplified.replace("!", "")
         # return simplified
 
-    def normaliseStopwords(self, tokens):
+    def normaliseStopwords(self, tokens, stop_words):
         # Get only the words that appear in the collections of tweets
         # indices = self.word_occurrence_matrix.nonzero()
         # no_of_words = len(indices[0])
@@ -106,7 +107,7 @@ class DeyClassifier:
 
         new_tokens = []
         for token in tokens:
-            if token not in self.stop_words:
+            if token not in stop_words:
                 new_tokens.append(token)
 
         # tweet = ' '.join(tokens)
@@ -266,22 +267,29 @@ class DeyClassifier:
 
         return ' '.join(tokens)
 
-    def setVocabulary(self, tweets):
+    def setVocabulary(self, tweets, isPhase1):
         self.count_vectoriser = CountVectorizer()
         self.word_occurrence_matrix = self.count_vectoriser.fit_transform(tweets)
         all_words = self.count_vectoriser.get_feature_names()
 
-
-        # ngram_range=(1, 3), min_df=0.01
-        self.count_vectoriser = CountVectorizer(min_df=0.004,#0.004 was found best at phase 2 optimum
-                                                stop_words=self.stop_words)
+        if isPhase1:
+            self.count_vectoriser = CountVectorizer(min_df=0.004,#0.004 was found best at phase 2 optimum
+                                                    stop_words=self.stop_words_p1)
+        else:
+            self.count_vectoriser = CountVectorizer(min_df=0.004,  # 0.004 was found best at phase 2 optimum
+                                                    stop_words=self.stop_words_p2)
 
         self.word_occurrence_matrix = self.count_vectoriser.fit_transform(tweets)  # (i,j) = value at pos ij
         kept_words = self.count_vectoriser.get_feature_names()
 
-        self.stop_words.extend(set(all_words).difference(set(kept_words)))
+        if isPhase1:
+            self.stop_words_p1.extend(set(all_words).difference(set(kept_words)))
+        else:
+            self.stop_words_p2.extend(set(all_words).difference(set(kept_words)))
 
-        # print("STOP WORDS:", self.count_vectoriser.stop_words_)
+    def setAdjVocabulary(self, tweets):
+        self.adj_count_vectoriser = CountVectorizer(min_df=0.004)
+        self.adj_count_vectoriser.fit_transform(tweets)
 
     def setNGramVocab(self, tweets):
         self.ngram_vectoriser = CountVectorizer(ngram_range=(1, 3), max_df=0.4, #min_df=0.01,
@@ -345,7 +353,7 @@ class DeyClassifier:
         return stemmed_tweet_tokens
 
     ## FIRST PHASE TRAINING
-    def setFeatures1(self, tokens, stemmed_tokens):
+    def setFeatures1(self, tokens, stemmed_tokens, full_tokens):
         print()
         print("--------------------------- CALCULATING PHASE 1 FEATURES ---------------------------")
 
@@ -368,31 +376,23 @@ class DeyClassifier:
 
                 # features[t].append(mpqa_of_tweet)
 
-                # print('stemmed:')
-                # if mpqa_of_tweet > 2 or mpqa_of_tweet < -2:
-                #     features[t].append(True)
-                # else:
-                #     features[t].append(False)
-
-                # features[t].append(mpqa_of_tweet)
-
                 self.test_array.append(mpqa_of_tweet)
+
 
         if self.p1f_active[P1F.swn]:
             for t in range(len(tokens)):
                 swn_score_of_tweet = self.calculate_swn_score(tokens[t], False)
                 features[t].append(swn_score_of_tweet)
 
+
+        # Computing features based on model adjectives
         if (self.p1f_active[P1F.adjectives]):
-            # # Computing features based on model adjectives
+
             for t in range(len(tokens)):
                 boolean_adjective_features = self.getAdjectiveOccurance(tokens[t], self.adjective_inv_vocab)
 
                 # go through each boolean feature and add it to the feature list for that tweet
                 features[t].extend(boolean_adjective_features)
-
-
-        # print("adjectives:",self.adjective_inv_vocab)
 
         return features
 
@@ -443,13 +443,13 @@ class DeyClassifier:
         # # Initialise indexes for referencing adjectives
         # adjective_inv_vocab = {adjective_vocab[i]: i for i in range(len(adjective_vocab))}
 
+        # SENTIMENT SCORES
         if self.p2f_active[P2F.mpqa]:
             for t in range(len(tokens)):
                 mpqa_of_tweet = self.calculate_mpqa(tokens[t], False, False)
                 mpqa_of_tweet += self.calculate_mpqa(stemmed_tokens[t], False, False)
 
                 features[t].append(mpqa_of_tweet)
-
         if self.p2f_active[P2F.swn]:
             for t in range(len(tokens)):
                 #print(raw_tweets[t])
@@ -536,28 +536,39 @@ class DeyClassifier:
     #
     #     return new_tweets
 
-    def initialiseModel(self, tweets):
+    def initialiseModel(self, tweets, isPhase1Model):
         print()
         print("----------------------------------- INITIALISING -----------------------------------")
-        self.setVocabulary(tweets)
-        self.setNGramVocab(tweets)
+        self.setVocabulary(tweets, isPhase1Model)
 
-    def preprocess(self, tweets, stances=[]):
+        if isPhase1Model:
+            self.setAdjVocabulary(tweets)
+        else:
+            self.setNGramVocab(tweets)
+
+    def preprocess(self, tweets, isPhase1, stances=[]):
         print()
         print("----------------------------------- PREPROCESSING -----------------------------------")
 
         # Use all words present to determine which are too common
         tokens = []
+        unnormalised_tokens = []
         for t in tweets:
             string_t = t.decode("utf-8").lower()
             t = self.normaliseSymbols(string_t)
             token_list = t.split()
-            token_list = self.normaliseStopwords(token_list)
+
+            # Get rid of infrequent words and manual stop words
+            if isPhase1:
+                token_list = self.normaliseStopwords(token_list, self.stop_words_p1)
+            else:
+                token_list = self.normaliseStopwords(token_list, self.stop_words_p2)
 
             string_t = self.normaliseSlang(token_list).lower()
             token_list = string_t.split()
 
             tokens.append(token_list)
+            unnormalised_tokens.append(t.split())
 
         #print("too l8 m8")
 
@@ -566,18 +577,20 @@ class DeyClassifier:
         # print('my stopwords:', self.stop_words)
         # print('all stopwords', self.count_vectoriser.get_stop_words())
 
-        return tokens, stemmed_tokens
+        return tokens, stemmed_tokens, unnormalised_tokens
 
-    def defineModelParams(self, tokens):
+    def defineModelParams(self, tokens, isPhase1):
         print()
         print("------------------------------ DEFINING MODEL PARAMS ------------------------------")
-        self.setNCharGramVocab(tokens)
 
-        # Initialise adjectives
-        adjective_vocab = self.getAdjectives(self.count_vectoriser.get_feature_names())
+        if isPhase1:
+            # Initialise adjectives
+            adjective_vocab = self.getAdjectives(self.adj_count_vectoriser.get_feature_names())
 
-        # Initialise indexes for referencing adjectives
-        self.adjective_inv_vocab = {adjective_vocab[i]: i for i in range(len(adjective_vocab))}
+            # Initialise indexes for referencing adjectives
+            self.adjective_inv_vocab = {adjective_vocab[i]: i for i in range(len(adjective_vocab))}
+        else:
+            self.setNCharGramVocab(tokens)
 
     def filterNeutral(self, tweets, tokens, stemmed_tokens, predictions, outputs):
         new_tokens = []
@@ -616,21 +629,22 @@ class DeyClassifier:
         # for i in range(len(debug_tweets)):
         #     tweets[i] = self.normalise(debug_tweets[i])
 
-        self.initialiseModel(tweets)
-        tokens, stemmed_tokens = self.preprocess(tweets, p1_stances)
-        self.defineModelParams(tokens)
-        p2_tweets, p2_tokens, p2_stemmed_tokens, p2_stances = self.filterNeutral(tweets, tokens, stemmed_tokens, stances, stances)
+        self.initialiseModel(tweets, True)
+        pre1_tokens, pre1_stemmed_tokens, pre1_unnormalised_tokens = self.preprocess(tweets, True)
+        self.defineModelParams(pre1_tokens, True)
 
-        ## =========== STOP-WORD RELATED =============
-        pc = PopCounter(tokens)
-        #pc.print()
+        fv1 = self.setFeatures1(pre1_tokens, pre1_stemmed_tokens, pre1_unnormalised_tokens)
+
+        self.initialiseModel(tweets, False)
+        pre2_tokens, pre2_stemmed_tokens, pre2_unnormalised_tokens = self.preprocess(tweets, False)
+        self.defineModelParams(pre2_tokens, False)
+
+        p2_tweets, p2_tokens, p2_stemmed_tokens, p2_stances = self.filterNeutral(tweets, pre2_tokens, pre2_stemmed_tokens, stances, stances)
+        fv2 = self.setFeatures2(p2_tweets, p2_tokens, p2_stemmed_tokens)
 
         #wsc = WordStanceCorrelater(p2_tokens, pc.frequency_map.keys(), p2_stances, swn_lexicon=self.swn_polarity_lexicon)
-        ## =========== STOP-WORD RELATED =============
 
-        ## Make sure to toggle tweets <-> debug_tweets
-        fv1 = self.setFeatures1(tokens, stemmed_tokens)
-        fv2 = self.setFeatures2(p2_tweets, p2_tokens, p2_stemmed_tokens)
+
         print('lengths', len(fv2), len(p2_tokens), len(p2_stances))
 
         if self.p1f_active[P1F.mpqa] or self.p1f_active[P1F.swn] or self.p1f_active[P1F.adjectives]:
@@ -638,7 +652,7 @@ class DeyClassifier:
             print("--------------------------------- TRAINING PHASE 1 ---------------------------------")
             self.printTopKFeatures(fv1, 5)
 
-            test_utilities.saveFeaturesToWeka('feats_train_p1', '{NONE,OTHER}', fv1, p1_stances)
+            #test_utilities.saveFeaturesToWeka('feats_train_p1', '{NONE,OTHER}', fv1, p1_stances)
 
             self.classifier_p1 = LinearSVC()
             self.classifier_p1 = self.classifier_p1.fit(fv1, p1_stances)
@@ -650,7 +664,7 @@ class DeyClassifier:
 
                # test_utilities.saveFeaturesToWeka('features_train_p2', '{FAVOR,AGAINST}', fv2, p2_stances)
 
-                self.printTopKFeatures(fv2, 5)
+                self.printTopKFeatures(fv2, 10)
 
                 self.classifier_p2 = LinearSVC()
                 self.classifier_p2 = self.classifier_p2.fit(fv2, p2_stances)
@@ -695,10 +709,10 @@ class DeyClassifier:
         else:
             p1_stances = self.getFirstPhaseStances(stances)
 
-        tokens, stemmed_tokens = self.preprocess(tweets)
+        tokens, stemmed_tokens, unnormalised_tokens = self.preprocess(tweets, True)
 
         ## Make sure to toggle tweets <-> debug_tweets
-        fv1 = self.setFeatures1(tokens, stemmed_tokens)
+        fv1 = self.setFeatures1(tokens, stemmed_tokens, unnormalised_tokens)
 
         print()
         print("---------------------------------- TESTING PHASE 1 --------------------------------")
@@ -716,6 +730,7 @@ class DeyClassifier:
 
         print()
         print("---------------------------------- TESTING PHASE 2 --------------------------------")
+        tokens, stemmed_tokens, unnormalised_tokens = self.preprocess(tweets, False)
         # Use the second model to predict the polarity of non-neutral tweets
         p2_tweets, p2_tokens, p2_stemmed_tokens, p2_stances = self.filterNeutral(tweets, tokens, stemmed_tokens, predicted_1, stances)
         fv2 = self.setFeatures2(p2_tweets, p2_tokens, p2_stemmed_tokens)
