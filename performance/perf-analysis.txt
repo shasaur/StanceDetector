@@ -1,0 +1,79 @@
+normal:
+0.705084745763
+             precision    recall  f1-score   support
+    b'NONE'       0.15      0.03      0.04        78
+   b'OTHER'       0.73      0.95      0.83       217
+avg / total       0.58      0.71      0.62       295
+
+just MPQA
+0.735593220339
+             precision    recall  f1-score   support
+    b'NONE'       0.00      0.00      0.00        78
+   b'OTHER'       0.74      1.00      0.85       217
+
+avg / total       0.54      0.74      0.62       295
+
+1) Samples:  295
+Feature vector size: 1
+MPQA subjective 103
+MPQA non-subjective 192
+[33, 45] which is 0.5769230769230769 % wrong
+[70, 147] which is 0.3225806451612903 % wrong
+
+2) ..without stem scores (test-2018-02-21--18-08-45.csv)
+MPQA subjective 149
+MPQA non-subjective 146
+[41, 37]
+[108, 109]
+
+3) ....without stop word list (test-2018-02-21--19-38-34.csv)
+MPQA subjective 149
+MPQA non-subjective 146
+[39, 39]
+[110, 107]
+
+4) ......without max cap (test-2018-02-21--19-42-24.csv)
+MPQA subjective 149
+MPQA non-subjective 146
+[39, 39]
+[110, 107]
+
+5) 1. but fixed subjectivity list (test-2018-02-21--20-11-14.csv)
+MPQA subjective 110
+MPQA non-subjective 185
+[35, 43] which is 0.5512820512820513 % wrong
+[75, 142] which is 0.3456221198156682 % wrong
+
+6) fixed not resetting the vocabulary (test-2018-02-22--20-19-57.csv)
+MPQA subjective 97
+MPQA non-subjective 198
+[34, 44] which is 0.5641025641025641 % wrong
+[63, 154] which is 0.2903225806451613 % wrong
+PyDev console: starting.
+
+7) fixed boundaries of to > 2 or < (test-2018-02-22--20-25-27.csv)
+MPQA subjective 162
+MPQA non-subjective 133
+[45, 33] which is 0.4230769230769231 % wrong
+[117, 100] which is 0.5391705069124424 % wrong
+PyDev console: starting.
+
+7.2) ..removed stemmed adding (test-2018-02-22--20-33-23.csv)
+MPQA subjective 212
+MPQA non-subjective 83
+[61, 17] which is 0.21794871794871795 % wrong
+[151, 66] which is 0.695852534562212 % wrong
+PyDev console: starting.
+
+8) using normalised tweets for stemming as well (test-2018-02-22--22-09-16.csv)
+MPQA shows polarity: 160
+MPQA shows no polarity/it is subjective: 135
+NO POLARITY: [43, 35] which is 0.44871794871794873 % wrong
+HAS POLARITY: [117, 100] which is 0.5391705069124424 % wrong
+PyDev console: starting.
+
+9) stemming subjectivity clues (test-2018-02-23--13-38-26.csv)
+MPQA shows polarity: 137
+MPQA shows no polarity/it is subjective: 158
+NO POLARITY: [41, 37] which is 0.47435897435897434 % wrong
+HAS POLARITY: [96, 121] which is 0.4423963133640553 % wrong

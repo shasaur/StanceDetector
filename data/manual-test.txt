@@ -1,0 +1,13 @@
+20006	Hillary Clinton	I have no idea what I'm saying #SemST	NONE
+20007	Hillary Clinton	Hillary is tiring at this point, seriously has she no timidness? #SemST	AGAINST
+20008	Hillary Clinton	Hillary ftw! #SemST	FAVOR
+20009	Hillary Clinton	Deleting emails is a coward's way out, she should run away while she can #SemST	AGAINST
+20010	Hillary Clinton	I don't really like Hillary, she's quite abnoxious #SemST	AGAINST
+20011	Hillary Clinton	What an amazing person! Astonishingly lovely in person! #SemST	FAVOR
+20012	Hillary Clinton	I HATE but LOVE this whole world!!!!!! #SemST	NONE
+20013	Hillary Clinton	You have no idea what you're talking about m8 #SemST	NONE
+20014	Hillary Clinton	Harsh #SemST	AGAINST
+20015	Hillary Clinton	Unfair #SemST	AGAINST
+20016	Hillary Clinton	Banana #SemST	NONE
+20017	Hillary Clinton	Me #SemST	NONE
+20005	Hillary Clinton	She's absolutely disgusting #SemST	AGAINST

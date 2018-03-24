@@ -1,0 +1,260 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.SGD -F 0 -L 0.01 -R 1.0E-4 -E 500 -C 0.001 -S 1
+Relation:     features
+Instances:    295
+Attributes:   215
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Loss function: Hinge loss (SVM)
+
+Squared loss (linear regression)
+
+stance = 
+
+         0.8197 (normalized) f0=False
+ +       0      (normalized) f1=False
+ +       1.0495 (normalized) f2=False
+ +       0      (normalized) f3=False
+ +      -2.6991 (normalized) f4=False
+ +       0      (normalized) f5=False
+ +      -2.4291 (normalized) f6=False
+ +       0      (normalized) f7=False
+ +       1.6794 (normalized) f8=False
+ +      -1.1797 (normalized) f9=False
+ +      -0.3698 (normalized) f10=False
+ +       1.1796 (normalized) f11=False
+ +       0      (normalized) f12=False
+ +       0.2199 (normalized) f13=False
+ +       1.4295 (normalized) f14=False
+ +       0.8597 (normalized) f15=False
+ +       0.04   (normalized) f16=False
+ +       0      (normalized) f17=False
+ +       0.8197 (normalized) f18=False
+ +       3.9488 (normalized) f19=False
+ +       3.489  (normalized) f20=False
+ +       0.8497 (normalized) f21=False
+ +       0      (normalized) f22=False
+ +       0      (normalized) f23=False
+ +       0      (normalized) f24=False
+ +       0      (normalized) f25=False
+ +      -2.8692 (normalized) f26=False
+ +       0      (normalized) f27=False
+ +       0.8397 (normalized) f28=False
+ +       0      (normalized) f29=False
+ +       0      (normalized) f30=False
+ +       0.9297 (normalized) f31=False
+ +       0      (normalized) f32=False
+ +       1.5394 (normalized) f33=False
+ +       0      (normalized) f34=False
+ +       0      (normalized) f35=False
+ +       1.0396 (normalized) f36=False
+ +       0      (normalized) f37=False
+ +       0      (normalized) f38=False
+ +      -0.0798 (normalized) f39=False
+ +       0      (normalized) f40=False
+ +       0      (normalized) f41=False
+ +       1.9595 (normalized) f42=False
+ +       0      (normalized) f43=False
+ +       0.8197 (normalized) f44=False
+ +      -2.1293 (normalized) f45=False
+ +       0.9297 (normalized) f46=False
+ +      -1.3495 (normalized) f47=False
+ +      -0.2399 (normalized) f48=False
+ +      -3.899  (normalized) f49=False
+ +      -0.32   (normalized) f50=False
+ +      -0.0598 (normalized) f51=False
+ +       0.8497 (normalized) f52=False
+ +       0      (normalized) f53=False
+ +       1.1397 (normalized) f54=False
+ +      -0.5497 (normalized) f55=False
+ +       2.2693 (normalized) f56=False
+ +       0      (normalized) f57=False
+ +       0      (normalized) f58=False
+ +       0      (normalized) f59=False
+ +      -2.1892 (normalized) f60=False
+ +       0      (normalized) f61=False
+ +       1.5395 (normalized) f62=False
+ +       0.8697 (normalized) f63=False
+ +       1.0696 (normalized) f64=False
+ +       2.869  (normalized) f65=False
+ +      -0.8797 (normalized) f66=False
+ +       0      (normalized) f67=False
+ +       0      (normalized) f68=False
+ +       0.8197 (normalized) f69=False
+ +       0      (normalized) f70=False
+ +       2.3893 (normalized) f71=False
+ +       0.0101 (normalized) f72=False
+ +       0      (normalized) f73=False
+ +      -0.19   (normalized) f74=False
+ +      -1.6694 (normalized) f75=False
+ +       0      (normalized) f76=False
+ +       0      (normalized) f77=False
+ +       0      (normalized) f78=False
+ +       0.9297 (normalized) f79=False
+ +      -3.1591 (normalized) f80=False
+ +       0.8397 (normalized) f81=False
+ +       1.7693 (normalized) f82=False
+ +      -0.57   (normalized) f83=False
+ +       0      (normalized) f84=False
+ +       0.8197 (normalized) f85=False
+ +       0      (normalized) f86=False
+ +       0      (normalized) f87=False
+ +       0      (normalized) f88=False
+ +       0.8197 (normalized) f89=False
+ +       0      (normalized) f90=False
+ +      -1.6394 (normalized) f91=False
+ +       0      (normalized) f92=False
+ +      -1.2795 (normalized) f93=False
+ +      -3.0493 (normalized) f94=False
+ +       0      (normalized) f95=False
+ +       2.5193 (normalized) f96=False
+ +      -0.4398 (normalized) f97=False
+ +      -2.0892 (normalized) f98=False
+ +      -0.0899 (normalized) f99=False
+ +       0      (normalized) f100=False
+ +       0.25   (normalized) f101=False
+ +       0.8197 (normalized) f102=False
+ +      -3.129  (normalized) f103=False
+ +      -0.45   (normalized) f104=False
+ +       0      (normalized) f105=False
+ +       0      (normalized) f106=False
+ +      -4.4886 (normalized) f107=False
+ +      -0.4399 (normalized) f108=False
+ +      -0.0899 (normalized) f109=False
+ +      -3.6787 (normalized) f110=False
+ +       0      (normalized) f111=False
+ +       3.9288 (normalized) f112=False
+ +       0.8197 (normalized) f113=False
+ +       0      (normalized) f114=False
+ +      -2.1493 (normalized) f115=False
+ +      -3.3191 (normalized) f116=False
+ +      -2.3293 (normalized) f117=False
+ +       0      (normalized) f118=False
+ +       0.8197 (normalized) f119=False
+ +       3.169  (normalized) f120=False
+ +       1.2896 (normalized) f121=False
+ +       0      (normalized) f122=False
+ +       0.8297 (normalized) f123=False
+ +       0      (normalized) f124=False
+ +       3.559  (normalized) f125=False
+ +      -3.959  (normalized) f126=False
+ +      -3.0789 (normalized) f127=False
+ +      -2.149  (normalized) f128=False
+ +      -3.3091 (normalized) f129=False
+ +      -1.6094 (normalized) f130=False
+ +      -0.14   (normalized) f131=False
+ +       0      (normalized) f132=False
+ +       1.1096 (normalized) f133=False
+ +      -2.5395 (normalized) f134=False
+ +       1.8794 (normalized) f135=False
+ +       0      (normalized) f136=False
+ +       0      (normalized) f137=False
+ +      -0.3199 (normalized) f138=False
+ +       2.6292 (normalized) f139=False
+ +      -3.4387 (normalized) f140=False
+ +       0      (normalized) f141=False
+ +       0      (normalized) f142=False
+ +       0      (normalized) f143=False
+ +       0      (normalized) f144=False
+ +       0      (normalized) f145=False
+ +       0      (normalized) f146=False
+ +       0.8197 (normalized) f147=False
+ +      -1.3495 (normalized) f148=False
+ +       0      (normalized) f149=False
+ +       0      (normalized) f150=False
+ +       0.8197 (normalized) f151=False
+ +       0.8197 (normalized) f152=False
+ +       2.4192 (normalized) f153=False
+ +       1.6594 (normalized) f154=False
+ +       0      (normalized) f155=False
+ +       0      (normalized) f156=False
+ +       0      (normalized) f157=False
+ +       0.8197 (normalized) f158=False
+ +       1.0197 (normalized) f159=False
+ +      -0.0601 (normalized) f160=False
+ +       0.9397 (normalized) f161=False
+ +       3.7188 (normalized) f162=False
+ +      -0.0401 (normalized) f163=False
+ +       0      (normalized) f164=False
+ +       0      (normalized) f165=False
+ +      -4.1386 (normalized) f166=False
+ +      -0.0899 (normalized) f167=False
+ +       0      (normalized) f168=False
+ +       0.8197 (normalized) f169=False
+ +       0      (normalized) f170=False
+ +       0      (normalized) f171=False
+ +       0      (normalized) f172=False
+ +       0      (normalized) f173=False
+ +       0      (normalized) f174=False
+ +       0      (normalized) f175=False
+ +      -3.4389 (normalized) f176=False
+ +       0.8197 (normalized) f177=False
+ +      -0.4298 (normalized) f178=False
+ +       0      (normalized) f179=False
+ +       0.8197 (normalized) f180=False
+ +       1.1196 (normalized) f181=False
+ +      -3.669  (normalized) f182=False
+ +       0      (normalized) f183=False
+ +      -1.9194 (normalized) f184=False
+ +      -0.9695 (normalized) f185=False
+ +       0.8897 (normalized) f186=False
+ +       0      (normalized) f187=False
+ +       0.8297 (normalized) f188=False
+ +      -2.9191 (normalized) f189=False
+ +      -2.2593 (normalized) f190=False
+ +       0.14   (normalized) f191=False
+ +      -2.3692 (normalized) f192=False
+ +       0      (normalized) f193=False
+ +       0.8497 (normalized) f194=False
+ +       0      (normalized) f195=False
+ +       1.2097 (normalized) f196=False
+ +       0      (normalized) f197=False
+ +       0      (normalized) f198=False
+ +       1.8993 (normalized) f199=False
+ +       1.2696 (normalized) f200=False
+ +       2.0894 (normalized) f201=False
+ +       0      (normalized) f202=False
+ +       0      (normalized) f203=False
+ +       0      (normalized) f204=False
+ +      -1.1896 (normalized) f205=False
+ +       0.9397 (normalized) f206=False
+ +       0.9297 (normalized) f207=False
+ +       2.3291 (normalized) f208=False
+ +       0.8197 (normalized) f209=False
+ +       1.1796 (normalized) f210=False
+ +       0      (normalized) f211=False
+ +       0      (normalized) f212=False
+ +      -0.6697 (normalized) f213=False
+ +       0.82  
+
+Time taken to build model: 0.18 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         199               67.4576 %
+Incorrectly Classified Instances        96               32.5424 %
+Kappa statistic                          0.1702
+Mean absolute error                      0.3254
+Root mean squared error                  0.5705
+Relative absolute error                 83.4739 %
+Root relative squared error            129.3388 %
+Total Number of Instances              295     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.774    0.603    0.781      0.774    0.778      0.170    0.586     0.771     OTHER
+                 0.397    0.226    0.388      0.397    0.392      0.170    0.586     0.313     NONE
+Weighted Avg.    0.675    0.503    0.677      0.675    0.676      0.170    0.586     0.650     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 168  49 |   a = OTHER
+  47  31 |   b = NONE
+

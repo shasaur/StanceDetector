@@ -1,0 +1,20 @@
+words not in vocab
+very weird format, not even sure if is negative
+so racist lol, acronyms? complex, indirect, implied
+
+only has one weak adjective/target word
+no idea what they're talking about
+
+
+** need to remove s from words/plurals (stem verb in a way, throws->throw)
+masked by poor stemming
+6
+5
+** need to apply stopword removal on stemmed tokens (simple change of references)
+3
+** not preprocessing the stems means capital stuff is ignored (FAKE0 as oppose to fake-2)
+-3
+implied by an event associated with Hillary
+-6
+sarcastic
+implied, soft verb "hand" to hillary

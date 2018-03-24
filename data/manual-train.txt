@@ -1,0 +1,10 @@
+20000	Hillary Clinton	Hillary is absolute garbage #SemST	AGAINST
+20001	Hillary Clinton	She is my favorite politition and I wish the best for her and her kids #SemST	FAVOR
+20002	Hillary Clinton	Apples are green #SemST	NONE
+20003	Hillary Clinton	Pears are also green, not really red #SemST	NONE
+20004	Hillary Clinton	This world is seriously disgusting, just look at Clinton #SemST	AGAINST
+20005	Hillary Clinton	She has some interesting points, go listen to her talks people #SemST	FOR
+20005	Hillary Clinton	Hillary is disgusting #SemST	AGAINST
+20005	Hillary Clinton	Hillary likes it rough #SemST	NONE
+20005	Hillary Clinton	Hillary is a warm person on the inside #SemST	FAVOR
+20005	Hillary Clinton	I wonder if the weather will make me wet today #SemST	NONE
