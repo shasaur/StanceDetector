@@ -33,14 +33,13 @@ hillary_test_set = test_all[test_all['target'] == b'Hillary Clinton']
 # Initialise
 classifier = DeyClassifier()
 classifier.togglePhaseOneFeatures(mpqa_score=True, swn_score=False, adjective_occurance=True)
-classifier.togglePhaseTwoFeatures(swn_score=True, mpqa_score=True, frame_semantics=True, target_detection=True,
-                                  word_ngrams=True, char_ngrams=True)
+classifier.togglePhaseTwoFeatures(swn_score=False, mpqa_score=False, frame_semantics=False, target_detection=False,
+                                  word_ngrams=True, char_ngrams=False)
 # classifier.toggleTriclassMode() # has to be on until algo learns to filter properly
 
 # Run model on data
-# classifier.train(hillary_train_set[0:len(hillary_train_set)-72])
 # classifier.train(train_set)
-# classifier.testPhase2(hillary_train_set[len(hillary_train_set)-72:len(hillary_train_set)])
+# classifier.test(test_all)
 classifier.train(hillary_train_set)
 classifier.test(hillary_test_set)
 

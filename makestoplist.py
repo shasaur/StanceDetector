@@ -31,17 +31,18 @@ for i in range(len(words)):
 #manual_stop_words = removeSubset(all, subset)
 
 
-stop_words = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from',
-                           'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that','the',
-                           'to', 'was', 'were', 'will', 'with']
+stop_words=[]
+# stop_words = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from',
+#                            'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that','the',
+#                            'to', 'was', 'were', 'will', 'with']
 
 # Add manual words
 stop_words.extend(manual_stop_words)
 
 # Don't add adjectives
-filtered_stop_words = []
-for w in stop_words:
-    if not isAdjective(w):
-        filtered_stop_words.append(w)
+# filtered_stop_words = []
+# for w in stop_words:
+#     if not isAdjective(w):
+#         filtered_stop_words.append(w)
 
-print(filtered_stop_words)
+print(stop_words)
