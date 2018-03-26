@@ -26,63 +26,76 @@ classifier.togglePhaseTwoFeatures(swn_score=False, mpqa_score=False, frame_seman
 # Prepare model with SemEval16 stance dataset
 classifier.train(hillary_train_set)
 
-# Load US election data
-print("START@", datetime.now())
-dates = []
-tweets = []
-stances = []
-users = []
-with open('data\\tweets\\0-58_part1\\tweet_subset_1_part1.csv', 'r', encoding="utf-8") as csvfile:
-    reader = csv.reader(csvfile, delimiter=',', quotechar='"')
-    i = 0
-    for line in reader:
-        # Avoid header
-        if i!=0:
+batch = 2000000
 
-            if i <= 2000000:
-                users.append(line[1])
+# Load US election data in chunks
+for iteration in range(8):
+    print("START"+str(iteration)+"@", datetime.now())
+    dates = []
+    tweets = []
+    stances = []
+    users = []
 
-                date_str = line[2]
-                date_str = ' '.join([date_str[0:4], date_str[5:7], date_str[8:10], date_str[11:13]])
-                dates.append(datetime.strptime(date_str, '%Y %m %d %H'))
+    with open('data\\tweets\\0-58_part1\\tweet_subset_1_part1_1.csv', 'r', encoding="utf-8") as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        i = 0
+        for line in reader:
+            # Avoid header
+            if i>=2:
 
-                tweets.append(line[3])
+                if i < batch * iteration:
+                    i += 1
+                elif i >= batch * iteration and i < batch * (iteration+1):
+                    users.append(line[1])
 
-                i += 1
+                    date_str = line[2]
+                    date_str = ' '.join([date_str[0:4], date_str[5:7], date_str[8:10], date_str[11:13]])
+                    dates.append(datetime.strptime(date_str, '%Y %m %d %H'))
+
+                    tweets.append(line[3])
+
+                    i += 1
+                else:
+                    print("i", i)
+                    break
+
             else:
-                break
+                i += 1
 
-        else:
-            i += 1
+        print("i",i)
 
-print("LOADED@", datetime.now())
+    print("LOADED@", datetime.now())
 
-hillary_tweets = []
-hillary_dates = []
-hillary_users = []
-for i in range(len(tweets)):
-    if "hillary" in tweets[i] or "clinton" in tweets[i]:
-        hillary_tweets.append(tweets[i])
-        hillary_dates.append(dates[i])
-        hillary_users.append(users[i])
+    hillary_tweets = []
+    hillary_dates = []
+    hillary_users = []
+    for i in range(len(tweets)):
+        if "hillary" in tweets[i] or "clinton" in tweets[i]:
+            hillary_tweets.append(tweets[i])
+            hillary_dates.append(dates[i])
+            hillary_users.append(users[i])
 
-print("FILTER@", datetime.now())
-print("Tweets including the target:", len(hillary_tweets))
+    print("FILTER@", datetime.now())
+    print("Tweets including the target:", len(hillary_tweets))
 
-# Analyse election data
-hillary_stances = []
-hillary_stances = classifier.classify(hillary_tweets)
-unique, counts = np.unique(hillary_stances, return_counts=True)
-d = dict(zip(unique, counts))
-print(len(hillary_stances))
-print("FOR:", d[b'FAVOR'])
-print("AGAINST:", d[b'AGAINST'])
-print("NEUTRAL:", d[b'NONE'])
+    # Analyse election data
+    hillary_stances = []
+    hillary_stances = classifier.classify(hillary_tweets)
+    unique, counts = np.unique(hillary_stances, return_counts=True)
+    d = dict(zip(unique, counts))
+    print(len(hillary_stances))
+    print("FOR:", d[b'FAVOR'])
+    print("AGAINST:", d[b'AGAINST'])
+    print("NEUTRAL:", d[b'NONE'])
 
-print("CLASS@", datetime.now())
+    print("CLASS@", datetime.now())
 
-with open('data\\tweets\\0-58_part1\\results_part1.csv', 'w', encoding="utf-8") as csvfile:
-    for i in range(len(hillary_tweets)):
-        csvfile.writelines(','.join([hillary_users[i], str(hillary_dates[i]), str(hillary_stances[i])+'\n']))
+    mode = 'a'
+    if iteration == 0:
+        mode = 'w'
 
-print("SAVED@", datetime.now())
+    with open('data\\tweets\\0-58_part1\\results_part_1_1.csv', mode, encoding="utf-8") as csvfile:
+        for i in range(len(hillary_tweets)):
+            csvfile.writelines(','.join([hillary_users[i], str(hillary_dates[i]), str(hillary_stances[i])+'\n']))
+
+    print("SAVED@", datetime.now())

@@ -34,6 +34,7 @@ print(len(test['target']), ' of ', len(test_all['target']))
 # Testing tweet content
 print(train[0][2])
 print(train[0][2].index("I"))
+# just testing changes
 
 # SVM feature extraction, transformation & training
 text_clf = Pipeline([('vect', CountVectorizer()),
