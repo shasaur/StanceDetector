@@ -41,7 +41,7 @@ class P2F(Enum):
     chargrams = 5
 
 class DeyClassifier:
-    def __init__(self):
+    def __init__(self, kernel, type):
         self.polarity_lexicon = MPQALexicon()
         self.swn_polarity_lexicon = SentiWordNetLexicon()
 
@@ -54,6 +54,9 @@ class DeyClassifier:
         self.adjective_inv_vocab = None
 
         self.classifier_p1 = None
+        self.classifier_p2 = None
+        self.kernel = kernel
+        self.type = type
 
         self.test_array = []
 
@@ -64,6 +67,7 @@ class DeyClassifier:
         self.stop_words_p1 = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'was', 'were', 'will', 'with', 'i', 'to', 'rubio', 'while', 'community', 'barackobama', 'world', 'you', 'whatever', 'ever', 'long', 'your', 've', 'my', 'm', 'u', 'run', 'this', 'up', 'only', 'words', 'like', 'our', 'year', 'out', 'loud', 'people', 'here', 'even', 'party', 'am', 'jeb', 'don', 'yet', 'finally', 'every', 'me', '2016', 'over', 'had', 'twitter', 'cruz', 'real', 'america', 'name', 'still', 'tedcruz', 'getting', '3', 'randpaul', 'freedom_justice_equality_education', 'innovation', 'development', 'happy_life', 'utopia', 'hide', 'hell', 'use', 'rest', 'meaning', 'yawn', 'trump', 'pretty', 'white', 'already', 'very', 'corrupt', 'marymorientes', 'change', 'baltimoreriots', 'raised', 'thing', 'hear', 'of', 'warcraft', '(online', 'gaming)', 'voters', 'destroy', 'bernie', 'sanders', 'always', 'poor', '5', 'realdonaldtrump', 'making', 'please', 'trust', 'presidential', 'policy', 'thanks', 'workers', 'big', 'lead', 'liar', 'jebbush', 'county', 'excited', 'fellowssc', 'hug', 'bad', 'truth', 'guy', 'in', 'life', 'scotus', 'wins', 'lovewins', 'true', 'must', 'enough', 'broke', 'having', 'fire', 'feelthebern', 'tonight', 'flip', 'issue', 'ecstasy', 'transparency', 'chance', 'less', 'million', 'control', 'zero']
         #self.stop_words_p2 = ['i', 'to', 'rubio', 'while', 'community', 'barackobama', 'world', 'you', 'whatever', 'ever', 'long', 'your', 've', 'my', 'm', 'u', 'run', 'this', 'up', 'only', 'words', 'like', 'our', 'year', 'out', 'loud', 'people', 'here', 'even', 'party', 'am', 'jeb', 'don', 'yet', 'finally', 'every', 'me', '2016', 'over', 'had', 'twitter', 'cruz', 'real', 'america', 'name', 'still', 'tedcruz', 'getting', '3', 'randpaul', 'freedom_justice_equality_education', 'innovation', 'development', 'happy_life', 'utopia', 'hide', 'hell', 'use', 'rest', 'meaning', 'yawn', 'trump', 'pretty', 'white', 'already', 'very', 'corrupt', 'marymorientes', 'change', 'baltimoreriots', 'raised', 'thing', 'hear', 'of', 'warcraft', '(online', 'gaming)', 'voters', 'destroy', 'bernie', 'sanders', 'always', 'poor', '5', 'realdonaldtrump', 'making', 'please', 'trust', 'presidential', 'policy', 'thanks', 'workers', 'big', 'lead', 'liar', 'jebbush', 'county', 'excited', 'fellowssc', 'hug', 'bad', 'truth', 'guy', 'in', 'life', 'scotus', 'wins', 'lovewins', 'true', 'must', 'enough', 'broke', 'having', 'fire', 'feelthebern', 'tonight', 'flip', 'issue', 'ecstasy', 'transparency', 'chance', 'less', 'million', 'control', 'zero']
 
+        print("initialising superclass")
 
         self.p1f_active = {}
         self.p2f_active = {}
@@ -253,7 +257,7 @@ class DeyClassifier:
         all_words = self.count_vectoriser.get_feature_names()
 
         if isPhase1:
-            self.count_vectoriser = CountVectorizer(min_df=0.004,#0.004 was found best at phase 2 optimum
+            self.count_vectoriser = CountVectorizer(min_df=0.01,#0.004 was found best at phase 2 optimum
                                                     stop_words=self.stop_words_p1)
         else:
             self.count_vectoriser = CountVectorizer(min_df=0.004, # 0.004 was found best at phase 2 optimum
@@ -268,7 +272,7 @@ class DeyClassifier:
             self.stop_words_p2.extend(set(all_words).difference(set(kept_words)))
 
     def setAdjVocabulary(self, tweets):
-        self.adj_count_vectoriser = CountVectorizer(min_df=0.004)
+        self.adj_count_vectoriser = CountVectorizer(min_df=0.01)
         self.adj_count_vectoriser.fit_transform(tweets)
 
     def setNGramVocab(self, tweets):
@@ -329,8 +333,16 @@ class DeyClassifier:
 
         return stemmed_tweet_tokens
 
+    def convertToCorrectEncoding(self, t):
+        string_t = ""
+        try:
+            string_t = t.decode("utf-8").lower()
+        except:
+            string_t = t.decode("ISO-8859-1").lower()
+        return string_t
+
     ## FIRST PHASE TRAINING
-    def setFeatures1(self, tokens, stemmed_tokens, full_tokens):
+    def setFeatures1(self, raw_tweets, tokens, stemmed_tokens, full_tokens):
         print()
         print("--------------------------- CALCULATING PHASE 1 FEATURES ---------------------------")
 
@@ -354,6 +366,35 @@ class DeyClassifier:
                 # features[t].append(mpqa_of_tweet)
 
                 self.test_array.append(mpqa_of_tweet)
+
+        # TARGET DETECTION
+        if True:
+            for t in range(len(tokens)):
+                sss = raw_tweets[t]
+
+                target_present = False
+                if 'hillary clinton' in sss:
+                    target_present = True
+                if 'hillaryclinton' in sss:
+                    target_present = True
+                if 'hillary' in sss:
+                    target_present = True
+                if 'clinton' in sss:
+                    target_present = True
+
+                features[t].append(target_present)
+
+                hashtags = ["crookedhillary", "trump", "draintheswamp", "nevertrump",
+                            "neverhillary", "wikileaks", "blm", "billclinton",
+                            "hillaryclinton","clinton","hillary", "imwithher",
+                            "ohhillno", "tgdn", "tcot","lnyhbt"]
+
+                for h in hashtags:
+                    if h in sss:
+                        features[t].append(True)
+                    else:
+                        features[t].append(False)
+
 
 
         if self.p1f_active[P1F.swn]:
@@ -445,22 +486,31 @@ class DeyClassifier:
         # TARGET DETECTION
         if self.p2f_active[P2F.target]:
             for t in range(len(tokens)):
-                if not isinstance(raw_tweets[t], str):
-                    sss = raw_tweets[t].decode('UTF-8').lower()
-                else:
-                    sss = raw_tweets[t].lower()
+                sss = raw_tweets[t]
 
-                target_present = False
-                if 'hillary clinton' in sss:
-                    target_present = True
-                if 'hillaryclinton' in sss:
-                    target_present = True
-                if 'hillary' in sss:
-                    target_present = True
-                if 'clinton' in sss:
-                    target_present = True
+                # target_present = False
+                # if 'hillary clinton' in sss:
+                #     target_present = True
+                # if 'hillaryclinton' in sss:
+                #     target_present = True
+                # if 'hillary' in sss:
+                #     target_present = True
+                # if 'clinton' in sss:
+                #     target_present = True
+                #
+                # features[t].append(target_present)
 
-                features[t].append(target_present)
+                hashtags = ["crookedhillary", "trump", "draintheswamp", "nevertrump",
+                            "neverhillary", "wikileaks", "blm", "billclinton",
+                            "hillaryclinton", "clinton", "hillary", "imwithher",
+                            "ohhillno", "tgdn", "tcot", "lnyhbt"]
+
+                for h in hashtags:
+                    if h in sss:
+                        features[t].append(True)
+                    else:
+                        features[t].append(False)
+
 
         # WORD N-GRAMS
         if self.p2f_active[P2F.wordgrams]:
@@ -551,10 +601,13 @@ class DeyClassifier:
         tokens = []
         unnormalised_tokens = []
         for t in tweets:
+            #print("")
+            #print(t)
+
             if not isinstance(t, str):
-                string_t = t.decode("utf-8").lower()
+                string_t = self.convertToCorrectEncoding(t)
             else:
-                string_t = t
+                string_t = t.lower()
             t = self.normaliseSymbols(string_t)
             token_list = t.split()
 
@@ -567,6 +620,8 @@ class DeyClassifier:
             string_t = self.normaliseSlang(token_list).lower()
             token_list = string_t.split()
 
+
+            #print(token_list)
             tokens.append(token_list)
             unnormalised_tokens.append(t.split())
 
@@ -611,9 +666,24 @@ class DeyClassifier:
         for i in range(k):
             print(features[i])
 
+    def fixTweets(self, tweets):
+        new_tweets = []
+        for t in tweets:
+            new_tweets.append(self.convertToCorrectEncoding(t).lower())
+        return new_tweets
+
     def train(self, train_set):
-        tweets = train_set['tweet']
+        tweets = self.fixTweets(train_set['tweet'])
         stances = train_set['stance']
+
+
+        ## DEBUGGING ##
+
+        # for i in range(len(tweets)):
+        #     if stances[i] == b'AGAINST':
+        #         tweets[i] += " #crookedhillary"
+
+        ## DEBUGGING ##
 
         if self.triclass_mode:
             p1_stances = stances
@@ -633,7 +703,7 @@ class DeyClassifier:
         pre1_tokens, pre1_stemmed_tokens, pre1_unnormalised_tokens = self.preprocess(tweets, True)
         self.defineModelParams(pre1_tokens, True)
 
-        fv1 = self.setFeatures1(pre1_tokens, pre1_stemmed_tokens, pre1_unnormalised_tokens)
+        fv1 = self.setFeatures1(tweets, pre1_tokens, pre1_stemmed_tokens, pre1_unnormalised_tokens)
 
         self.initialiseModel(tweets, False)
         pre2_tokens, pre2_stemmed_tokens, pre2_unnormalised_tokens = self.preprocess(tweets, False)
@@ -699,9 +769,35 @@ class DeyClassifier:
 
         return subjectivity_predictions
 
+    def calculateFP(self, predicted, actual, positive_class, negative_class):
+        tp = 0
+        fp = 0
+        tn = 0
+        fn = 0
+
+        for i in range(len(predicted)):
+            if predicted[i] == positive_class:
+                if actual[i] == positive_class:
+                    tp += 1
+                else:
+                    fp += 1
+            elif predicted[i] == negative_class:
+                if actual[i] == negative_class:
+                    tn += 1
+                else:
+                    fn += 1
+
+        print("TP:", tp)
+        print("FP:", fp)
+        print("FN:", fn)
+
+        print("precision", float(tp)/float(tp+fp))
+        print("recall", float(tp)/float(tp+fn))
+        print("fallout", float(fp)/float(fp+tn))
+
     ## TESTING
     def test(self, test_set):
-        tweets = test_set['tweet']
+        tweets = self.fixTweets(test_set['tweet'])
         stances = test_set['stance']
 
         if self.triclass_mode:
@@ -712,7 +808,7 @@ class DeyClassifier:
         tokens, stemmed_tokens, unnormalised_tokens = self.preprocess(tweets, True)
 
         ## Make sure to toggle tweets <-> debug_tweets
-        fv1 = self.setFeatures1(tokens, stemmed_tokens, unnormalised_tokens)
+        fv1 = self.setFeatures1(tweets, tokens, stemmed_tokens, unnormalised_tokens)
 
         print()
         print("---------------------------------- TESTING PHASE 1 --------------------------------")
@@ -723,6 +819,14 @@ class DeyClassifier:
         self.quickCount(predicted_1, p1_stances)
         print(np.mean(predicted_1 == p1_stances))
         print(metrics.classification_report(p1_stances, predicted_1))
+
+        print()
+        print("--------------------------------------- DEBUG -------------------------------------")
+        for i in range(len(tweets)):
+            print("")
+            print(tweets[i])
+            print(tokens[i])
+            print(predicted_1[i], " where as it's actually ", p1_stances[i])
 
         ## Save to CSV
         #test_utilities.saveFeaturesToCSV('test', fv1, predicted_1, p1_stances)
@@ -743,14 +847,23 @@ class DeyClassifier:
         print(np.mean(predicted_2 == p2_stances))
         print(metrics.classification_report(p2_stances, predicted_2))
 
-        print()
-        print("-------------------------------------- RESULTS ------------------------------------")
         # Now join the results for a combined final score
         final_predictions = self.combineResults(predicted_1, predicted_2)
+
+
+
+        print()
+        print("-------------------------------------- RESULTS ------------------------------------")
+
 
         self.quickCount(final_predictions, stances)
         print(np.mean(final_predictions == stances))
         print(metrics.classification_report(stances, final_predictions))
+
+        self.calculateFP(final_predictions, stances, b'AGAINST', b'FAVOR')
+
+        self.calculateFP(final_predictions, stances, b'FAVOR', b'AGAINST')
+
 
 
         # for i in range(len(predicted)):
